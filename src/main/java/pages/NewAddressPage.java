@@ -10,7 +10,7 @@ public class NewAddressPage {
     public NewAddressPage(WebDriver driver){
         PageFactory.initElements(driver, this);
     }
-    //alias, address, city, zip/postal code, country, phone
+
     @FindBy(id = "field-alias")
     WebElement aliasInput;
 

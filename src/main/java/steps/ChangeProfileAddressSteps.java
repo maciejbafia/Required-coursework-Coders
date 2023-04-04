@@ -11,10 +11,10 @@ import java.time.Duration;
 public class ChangeProfileAddressSteps {
 
     public static WebDriver driver;
-    String url = "https://mystore-testlab.coderslab.pl/index.php";
+    public String url = "https://mystore-testlab.coderslab.pl/index.php";
 
     @Given("Not logged in but have created account while on the main page of app")
-    public void SetUp(){
+    public void setUp(){
         System.setProperty("webdriver.chrome.driver","src/main/resources/chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
@@ -24,13 +24,16 @@ public class ChangeProfileAddressSteps {
         driver.get(url);
     }
 
-    @When("After selecting Sign in from main page login to your account with {string} and {string}")
-    public void loginFromMainPage(String email, String password){
+    @When("Click Sign in on main page")
+    public void goToLoginPage(){
         HomePage homePage = new HomePage(driver);
         homePage.clickSignInBtn();
-        LogInToYourAccountPage logInToYourAccountPage = new LogInToYourAccountPage(driver);
-        logInToYourAccountPage.loginToAccount(email, password);
     }
+
+    @And("Login to your account with {string} and {string}")
+        public void loginFromMainPage(String email, String password){
+        LogInToYourAccountPage logInToYourAccountPage = new LogInToYourAccountPage(driver);
+        logInToYourAccountPage.loginToAccount(email, password);}
 
     @Then("Create new address and fill address form, with {string} {string} {string} {string} {string} {string} {string}")
     public void createFirstNewAddress(String alias, String address, String city, String postalCode,String country, String state ,String phoneNumber){
