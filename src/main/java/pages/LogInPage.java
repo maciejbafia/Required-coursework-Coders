@@ -5,10 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LogInToYourAccountPage {
-    //takpachniestozlotych@mail.pl
-    //testtest
-    public LogInToYourAccountPage(WebDriver driver){
+public class LogInPage {
+
+    public LogInPage(WebDriver driver){
         PageFactory.initElements(driver, this);
     }
 

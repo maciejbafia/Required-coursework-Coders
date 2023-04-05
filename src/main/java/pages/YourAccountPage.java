@@ -13,7 +13,7 @@ public class YourAccountPage {
     @FindBy(id = "address-link")
     WebElement addFirstAddressBtn;
 
-    @FindBy(id = "addresses-link")
+    @FindBy(css = "#addresses-link")
     WebElement addressesBtn;
 
     public void clickAddresses(){

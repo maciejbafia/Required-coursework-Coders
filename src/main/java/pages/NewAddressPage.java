@@ -35,15 +35,15 @@ public class NewAddressPage {
     @FindBy(xpath = "//footer/button[contains(text(),save)]")
     WebElement saveBtn;
 
-    public void newAddress(String alias, String address, String city, String postalCode,String country, String state ,String phoneNumber){
+    public void newAddress(String alias, String address, String city, String postalCode,String country ,String phoneNumber){
         aliasInput.sendKeys(alias);
         addressInput.sendKeys(address);
         cityInput.sendKeys(city);
         zipOrPostalCode.sendKeys(postalCode);
         Select countryValue = new Select(countryInput);
         countryValue.selectByValue(country);
-        Select stateFromList = new Select(stateInput);
-        stateFromList.selectByValue(state);
+//        Select stateFromList = new Select(stateInput);
+//        stateFromList.selectByValue(state);
         phoneInput.sendKeys(phoneNumber);
         saveBtn.click();
 
