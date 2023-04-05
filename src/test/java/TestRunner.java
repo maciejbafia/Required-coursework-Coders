@@ -4,8 +4,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/java/features/ChangeProfileAddress.feature",
-        glue = {"steps"},
+        features = "src/test/java/features",
         plugin = {"pretty"},
         publish = true
 )
