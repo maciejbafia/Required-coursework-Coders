@@ -23,7 +23,6 @@ public class ChangeProfileAddressSteps {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get(url);
-
     }
 
     @When("Click Sign in on main page")
@@ -35,7 +34,8 @@ public class ChangeProfileAddressSteps {
     @And("Login to your account with {string} and {string}")
         public void loginFromMainPage(String email, String password){
         LogInPage logInPage = new LogInPage(driver);
-        logInPage.loginToAccount(email, password);}
+        logInPage.loginToAccount(email, password);
+    }
 
     @Then("Create new address and fill address form, with {string} {string} {string} {string} {string} {string}")
     public void createFirstNewAddress(String alias, String address, String city, String postalCode,String country_value,String phoneNumber){
@@ -51,8 +51,12 @@ public class ChangeProfileAddressSteps {
     public void checkAddressValues(String alias, String user, String address, String city, String postalCode,String country,String phoneNumber){
         YourAddressesPage yourAddressesPage = new YourAddressesPage(driver);
         Assert.assertEquals(yourAddressesPage.getAddressInfo(),user+ "\n" +alias + "\n" + address + "\n" + city+ "\n" + postalCode+ "\n" + country+ "\n" + phoneNumber);
-        yourAddressesPage.clickContinue();
     }
 
-//    @But"Delete updated address and refresh page to see if changes occurred")
+    @But("Delete updated address and check if changes occurred")
+    public void deleteAddressAndCheck(){
+        YourAddressesPage yourAddressesPage = new YourAddressesPage(driver);
+        Assert.assertFalse(yourAddressesPage.deleteAndCheck());
+        driver.quit();
+    }
 }
